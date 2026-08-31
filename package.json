@@ -1,0 +1,11 @@
+{
+  "name": "innfill",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Innfill — Freelancing that works for India. Registered Hyderabad marketplace redesign.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "preview": "npx serve . -l 3000"
+  }
+}
