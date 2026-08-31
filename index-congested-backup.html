@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INNFILL — Connect, Create, Collaborate. Freelancing that works for India.</title>
+<meta name="description" content="Innfill is a registered Hyderabad marketplace for Indian freelancers & startups. Escrow with Razorpay, 14% flat commission, 1–3 day payouts. Built by students, for builders. Featured in Deccan Chronicle.">
+<link rel="icon" href="./logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,SOFT,WONK@9..144,0..100,0..1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        paper: '#FDF8F0',
+        paper2: '#F5EBDC',
+        stone2: '#E8DDC9',
+        ink: '#1A2320',
+        ink2: '#2E3A36',
+        terracotta: '#C86A3B',
+        terracottaD: '#A84E2B',
+        sage: '#8FA98B',
+        sageWash: '#DCE6DA',
+        brass: '#C2A46A',
+        blueInfill: '#0EA5E9',
+      },
+      fontFamily: {
+        display: ['Fraunces','Georgia','serif'],
+        body: ['Instrument Sans','system-ui','sans-serif'],
+        mono: ['JetBrains Mono','monospace'],
+      },
+      boxShadow: {
+        paper: '0 4px 24px rgba(26,35,32,0.06), 0 1px 0 rgba(26,35,32,0.08)',
+        lift: '0 8px 32px rgba(26,35,32,0.10), 0 1px 0 rgba(26,35,32,0.12)',
+      }
+    }
+  }
+}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{background:#FDF8F0;color:#1A2320}
+  .grain{position:relative}
+  .grain::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0.07;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E")}
+  .rule{height:1px;background:linear-gradient(to right, transparent, #E8DDC9 8%, #E8DDC9 92%, transparent)}
+  .ink-rule{height:1px;background:#E8DDC9}
+  .stamp{border:1.5px solid #1A2320;transform:rotate(-1.2deg)}
+  ::selection{background:#C86A3B;color:#FDF8F0}
+  /* custom scrollbar */
+  *{scrollbar-width:thin;scrollbar-color:#E8DDC9 #FDF8F0}
+</style>
+</head>
+<body class="font-body antialiased">
+
+<!-- Utility bar — registered + press + local -->
+<div class="w-full bg-ink text-paper text-[11px] tracking-[0.12em] uppercase font-mono">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 py-2 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="hidden sm:inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sage animate-pulse"></span> REGISTERED • HYDERABAD • EST. 2024</span>
+      <span class="sm:hidden">REGISTERED • HYD • 2024</span>
+      <span class="hidden md:inline opacity-60">—</span>
+      <span class="hidden md:inline opacity-80">As featured in <span class="font-bold text-paper">Deccan Chronicle</span> • May 2026</span>
+    </div>
+    <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+      <a href="mailto:support@innfill.in" class="hover:text-sageWash transition">support@innfill.in</a>
+      <span class="opacity-30 hidden sm:inline">|</span>
+      <span class="hidden sm:inline opacity-80">9-80/3/A, Bodduppal, Hyderabad 500092</span>
+      <a href="https://linkedin.com/company/innfill-in" target="_blank" rel="noopener" class="ml-1 sm:ml-2 inline-flex items-center gap-1 hover:text-white transition"><i class="ph ph-linkedin-logo text-[14px]"></i> <span class="hidden sm:inline">LinkedIn</span></a>
+      <a href="https://instagram.com/innfill.in" target="_blank" rel="noopener" class="inline-flex items-center gap-1 hover:text-white transition"><i class="ph ph-instagram-logo text-[14px]"></i> <span class="hidden sm:inline">@innfill.in</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- Masthead -->
+<header class="sticky top-0 z-40 bg-paper/85 backdrop-blur-[8px] border-b border-stone2">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between py-3 sm:py-4 gap-6">
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="./logo.png" alt="Innfill block mark" class="w-9 h-9 sm:w-10 sm:h-10 object-contain bg-white border border-stone2 p-1 shadow-paper group-hover:shadow-lift transition">
+        <div class="leading-none">
+          <div class="font-display font-[800] tracking-[-0.03em] text-[20px] sm:text-[22px] flex"><span class="text-ink">INN</span><span class="text-blueInfill">FILL</span><span class="text-ink font-body font-mono font-normal text-[10px] tracking-[0.18em] ml-2 mt-1 hidden sm:inline">CONNECT • CREATE • COLLABORATE</span></div>
+          <div class="hidden sm:block font-mono text-[10px] tracking-[0.16em] text-ink2/70 -mt-0.5">FREELANCING FOR INDIANS • BY BUILDERS IN HYDERABAD</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-7 font-mono text-[12px] tracking-[0.12em] uppercase">
+        <a href="#how" class="hover:text-terracotta transition py-2 border-b border-transparent hover:border-terracotta">How it works</a>
+        <a href="#browse" class="hover:text-terracotta transition py-2 border-b border-transparent hover:border-terracotta">Browse talent</a>
+        <a href="#pricing" class="hover:text-terracotta transition py-2 border-b border-transparent hover:border-terracotta">Pricing — 14% flat</a>
+        <a href="#community" class="hover:text-terracotta transition py-2 border-b border-transparent hover:border-terracotta">Community</a>
+      </nav>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="#browse" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium border border-ink px-4 py-2 hover:bg-ink hover:text-paper transition"><i class="ph ph-magnifying-glass"></i> Explore</a>
+        <a href="https://innfill.in/login" class="inline-flex items-center justify-center text-sm font-semibold bg-terracotta text-paper px-5 py-2.5 hover:bg-terracottaD transition shadow-paper">Start — it’s free <i class="ph ph-arrow-right ml-1"></i></a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 border border-stone2 grid place-items-center hover:bg-paper2 transition" aria-label="Menu"><i class="ph ph-list text-xl"></i></button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden lg:hidden border-t border-stone2 py-4 space-y-3 font-mono text-sm uppercase tracking-widest">
+      <a href="#how" class="block py-2">How it works</a>
+      <a href="#browse" class="block py-2">Browse talent</a>
+      <a href="#pricing" class="block py-2">Pricing — 14% flat</a>
+      <a href="#community" class="block py-2">Community</a>
+      <div class="flex gap-2 pt-2">
+        <a href="https://linkedin.com/company/innfill-in" target="_blank" class="flex-1 border border-ink text-center py-2">LinkedIn</a>
+        <a href="https://instagram.com/innfill.in" target="_blank" class="flex-1 border border-ink text-center py-2">Instagram</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — asymmetric editorial -->
+<main>
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
+  <div class="grid lg:grid-cols-12 gap-6 lg:gap-0 border border-stone2 bg-white shadow-paper overflow-hidden">
+    <!-- Left — editorial -->
+    <div class="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col">
+      <div class="inline-flex items-center gap-2 self-start border border-ink/15 bg-paper2 px-3 py-1.5 font-mono text-[11px] tracking-[0.14em] uppercase">
+        <span class="w-2 h-2 bg-sage rounded-full"></span> LIVE IN HYDERABAD • STUDENT-FOUNDED 2024
+        <span class="hidden sm:inline opacity-40">—</span>
+        <span class="hidden sm:inline-flex items-center gap-1"><i class="ph ph-seal-check text-sage"></i> Registered in India</span>
+      </div>
+      <h1 class="font-display font-[600] tracking-[-0.04em] leading-[0.9] text-[38px] sm:text-[52px] lg:text-[58px] mt-6">
+        Freelancing that<br>
+        <span class="italic font-[500] text-terracotta">actually</span> works<br>
+        for India.
+      </h1>
+      <p class="mt-5 text-[17px] leading-7 text-ink2 max-w-[52ch]">
+        No 20% cuts. No ghosting. No “AI will do it.” <span class="bg-sageWash px-1 font-medium">Razorpay escrow, 14% flat, 1–3 day payouts</span> — built by NIAT &amp; BITS builders for Indian students, studios and startups who ship.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#browse" class="inline-flex items-center gap-2 bg-ink text-paper px-6 py-3 font-semibold hover:bg-black transition">Hire trusted talent <i class="ph ph-arrow-up-right"></i></a>
+        <a href="https://innfill.in/register" class="inline-flex items-center gap-2 border border-ink px-6 py-3 font-semibold hover:bg-paper2 transition">Offer your services <i class="ph ph-plus"></i></a>
+      </div>
+      <div class="mt-6 flex items-center gap-4 text-sm">
+        <div class="flex -space-x-2">
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&h=100&fit=crop&crop=face" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Freelancer">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Freelancer">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face" class="w-8 h-8 rounded-full border-2 border-white object-cover" alt="Freelancer">
+          <span class="w-8 h-8 rounded-full bg-terracotta text-paper grid place-items-center text-xs font-mono font-bold border-2 border-white">+2.4k</span>
+        </div>
+        <div class="leading-tight">
+          <div class="font-semibold flex items-center gap-1"><span class="text-amber-500">★★★★★</span> 4.8/5 from 342 reviews</div>
+          <div class="text-ink2/70 text-xs font-mono">Real payouts, not vanity metrics. See breakdown ↓</div>
+        </div>
+      </div>
+      <!-- proof bar inside hero -->
+      <div class="mt-8 grid grid-cols-3 divide-x divide-stone2 border border-stone2 bg-paper2 text-center">
+        <div class="py-3">
+          <div class="font-display text-xl leading-none">14%</div>
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Flat, honest</div>
+        </div>
+        <div class="py-3">
+          <div class="font-display text-xl leading-none">₹9,600</div>
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Net on ₹10k*</div>
+        </div>
+        <div class="py-3">
+          <div class="font-display text-xl leading-none">1–3 days</div>
+          <div class="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Bank payout</div>
+        </div>
+      </div>
+      <div class="mt-2 font-mono text-[10px] text-ink2/50">*After refund, fee & GST — calculator below. No hidden cuts.</div>
+    </div>
+    <!-- Right — product window -->
+    <div class="lg:col-span-5 bg-paper2 border-t lg:border-t-0 lg:border-l border-stone2 p-4 sm:p-6 flex flex-col gap-4">
+      <!-- browser chrome -->
+      <div class="bg-white border border-stone2 shadow-paper overflow-hidden">
+        <div class="h-8 bg-paper2 border-b border-stone2 flex items-center gap-1.5 px-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57] border border-black/10"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] border border-black/10"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28CA42] border border-black/10"></span>
+          <span class="ml-3 flex-1 bg-white border border-stone2 rounded-full px-3 py-1 font-mono text-[11px] flex items-center gap-2"><i class="ph ph-lock text-sage"></i> innfill.in/browse — Escrow protected <span class="ml-auto hidden sm:inline opacity-40">Razorpay</span></span>
+        </div>
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center justify-between">
+            <div class="font-mono text-[11px] tracking-[0.12em] uppercase opacity-60">LIVE ON INNFILL • 2 min ago</div>
+            <span class="inline-flex items-center gap-1 text-[11px] font-mono bg-sageWash border border-sage/20 px-2 py-0.5"><span class="w-1.5 h-1.5 bg-sage rounded-full animate-pulse"></span> 128 available</span>
+          </div>
+          <div class="mt-3 space-y-3">
+            <!-- order card 1 -->
+            <div class="border border-stone2 p-3 flex gap-3 hover:shadow-paper transition bg-white">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&fit=crop&crop=face" class="w-12 h-12 object-cover border border-stone2" alt="">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="font-semibold text-sm leading-tight">Brand + landing for D2C skincare</div>
+                  <div class="font-mono text-xs font-bold bg-ink text-paper px-1.5 py-0.5">₹18,000</div>
+                </div>
+                <div class="text-xs text-ink2/70">Ananya • Hyderabad • Figma + Framer • 4.9 (82)</div>
+                <div class="mt-1.5 flex gap-1.5">
+                  <span class="text-[10px] font-mono border border-stone2 bg-paper2 px-1.5 py-0.5">5-day delivery</span>
+                  <span class="text-[10px] font-mono border border-stone2 bg-paper2 px-1.5 py-0.5">2 revisions</span>
+                  <span class="ml-auto text-[10px] font-mono text-sage font-bold">● Available</span>
+                </div>
+              </div>
+            </div>
+            <div class="border border-stone2 p-3 flex gap-3 hover:shadow-paper transition bg-white opacity-90">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=face" class="w-12 h-12 object-cover border border-stone2" alt="">
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="font-semibold text-sm leading-tight">Next.js + Supabase MVP — 3 weeks</div>
+                  <div class="font-mono text-xs font-bold bg-ink text-paper px-1.5 py-0.5">₹45,000</div>
+                </div>
+                <div class="text-xs text-ink2/70">Sharvan G. • BITS Pilani • 4.8 (41) • Razorpay</div>
+                <div class="mt-1.5 flex gap-1.5">
+                  <span class="text-[10px] font-mono border border-stone2 bg-paper2 px-1.5 py-0.5">Escrow</span>
+                  <span class="text-[10px] font-mono border border-stone2 bg-paper2 px-1.5 py-0.5">Code + deploy</span>
+                </div>
+              </div>
+            </div>
+            <div class="border border-dashed border-stone2 p-3 flex items-center justify-between bg-paper/60">
+              <div class="font-mono text-xs"><span class="font-bold">You post →</span> AI matches → chat → escrow → deliver</div>
+              <span class="text-terracotta font-mono text-xs font-bold flex items-center gap-1">How <i class="ph ph-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center justify-between font-mono text-[11px]">
+            <span class="opacity-60">Secure chat • File share • Revisions</span>
+            <span class="flex items-center gap-1"><i class="ph ph-shield-check text-sage"></i> Funds held till you approve</span>
+          </div>
+        </div>
+      </div>
+      <!-- mini testimonial + stamp -->
+      <div class="relative bg-white border border-stone2 p-4 flex gap-3 items-start">
+        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&h=100&fit=crop&crop=face" class="w-10 h-10 rounded-full object-cover border border-stone2" alt="">
+        <div class="flex-1">
+          <div class="text-sm leading-5">“We went from idea to paying users in 21 days. One Innfill team did design + build + Razorpay.”</div>
+          <div class="font-mono text-xs mt-1.5 opacity-60">— Founder, D2C (Hyderabad) • ₹1.8L project • 5★</div>
+        </div>
+        <div class="hidden sm:grid absolute -top-2 -right-2 stamp bg-paper px-2 py-1 font-mono text-[10px] tracking-[0.16em] font-bold">VERIFIED PAYOUT</div>
+      </div>
+      <div class="font-mono text-[10px] leading-4 opacity-50 text-center">Built for India: UPI, Cards, NetBanking, Wallets via Razorpay. PAN/IFSC for payouts. No agencies.</div>
+    </div>
+  </div>
+  <!-- press strip -->
+  <div class="mt-3 border border-stone2 bg-white px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+    <div class="font-mono text-[11px] tracking-[0.16em] uppercase opacity-60">Community & Press</div>
+    <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-sm">
+      <span class="font-display italic text-ink/80">"Fix Freelancing for Indians 🇮🇳"</span>
+      <span class="h-4 w-px bg-stone2 hidden sm:block"></span>
+      <span class="font-semibold">Deccan Chronicle</span> <span class="opacity-60 text-xs font-mono">May 2026</span>
+      <span class="h-4 w-px bg-stone2 hidden sm:block"></span>
+      <span class="inline-flex items-center gap-1.5"><i class="ph ph-users-three"></i> 2.4k community • Student-first</span>
+      <a href="https://linkedin.com/company/innfill-in" target="_blank" class="ml-auto inline-flex items-center gap-1 border border-ink px-3 py-1.5 text-xs font-semibold hover:bg-ink hover:text-paper transition">Follow build in public <i class="ph ph-arrow-up-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUTH STRIP -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-6">
+  <div class="bg-ink text-paper grid md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10 border border-ink">
+    <div class="p-5 flex gap-3">
+      <i class="ph ph-warning-circle text-2xl opacity-60"></i>
+      <div>
+        <div class="font-semibold leading-tight">If you're paying 20% on Upwork/Fiverr</div>
+        <div class="text-sm opacity-70 leading-5">Innfill is 14% flat. On ₹1L you keep ₹6k more.</div>
+      </div>
+    </div>
+    <div class="p-5 flex gap-3">
+      <i class="ph ph-shield-check text-2xl opacity-60"></i>
+      <div>
+        <div class="font-semibold leading-tight">Escrow, not trust-me-bro</div>
+        <div class="text-sm opacity-70 leading-5">Razorpay holds money. Freelancer paid after you approve.</div>
+      </div>
+    </div>
+    <div class="p-5 flex gap-3">
+      <i class="ph ph-bank text-2xl opacity-60"></i>
+      <div>
+        <div class="font-semibold leading-tight">PAN/IFSC, 1–3 day bank transfer</div>
+        <div class="text-sm opacity-70 leading-5">No wallet games. Min ₹100. Direct to account.</div>
+      </div>
+    </div>
+    <div class="p-5 flex gap-3">
+      <i class="ph ph-graduation-cap text-2xl opacity-60"></i>
+      <div>
+        <div class="font-semibold leading-tight">Built by students, for students</div>
+        <div class="text-sm opacity-70 leading-5">NIAT + BITS founders. Community, not just marketplace.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS — editorial timeline -->
+<section id="how" class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-10">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <div class="font-mono text-xs tracking-[0.18em] uppercase text-terracotta">How Innfill actually works</div>
+      <h2 class="font-display text-[32px] sm:text-[40px] tracking-[-0.03em] leading-none mt-1">Post → Match → Escrow → Deliver</h2>
+    </div>
+    <div class="font-mono text-xs opacity-60 max-w-[36ch]">Same flow as your campus placement cell — but with contracts, chat, and a bank-grade escrow in the middle.</div>
+  </div>
+  <div class="mt-6 grid lg:grid-cols-4 gap-4">
+    <!-- step 1 -->
+    <div class="bg-white border border-stone2 p-5 flex flex-col">
+      <div class="flex items-center gap-2 font-mono text-xs tracking-[0.14em] uppercase"><span class="w-6 h-6 bg-ink text-paper grid place-items-center text-xs">01</span> Post requirement</div>
+      <div class="mt-3 text-sm leading-6 text-ink2">Brief + budget + deadline. Attach Figma, PRD, UPI refs. Be specific — saves 2 days back-and-forth.</div>
+      <div class="mt-4 bg-paper2 border border-stone2 p-3 font-mono text-xs leading-4">Example: “Landing + Razorpay checkout, 7 days, ₹25k, Figma included”</div>
+      <div class="mt-auto pt-4 font-mono text-[11px] opacity-50">Takes 3 min</div>
+    </div>
+    <!-- step 2 -->
+    <div class="bg-white border border-stone2 p-5 flex flex-col">
+      <div class="flex items-center gap-2 font-mono text-xs tracking-[0.14em] uppercase"><span class="w-6 h-6 bg-ink text-paper grid place-items-center text-xs">02</span> AI match + shortlist</div>
+      <div class="mt-3 text-sm leading-6 text-ink2">We match on skills + past delivery + rating, then you chat 1:1 inside Innfill. No off-platform risk.</div>
+      <div class="mt-4 flex items-center gap-2 text-xs"><span class="w-2 h-2 bg-sage rounded-full"></span> Real chat • File share • Read receipts</div>
+      <div class="mt-auto pt-4 font-mono text-[11px] opacity-50">Reply in &lt;24h = 3× more orders</div>
+    </div>
+    <!-- step 3 -->
+    <div class="bg-white border border-stone2 p-5 flex flex-col">
+      <div class="flex items-center gap-2 font-mono text-xs tracking-[0.14em] uppercase"><span class="w-6 h-6 bg-ink text-paper grid place-items-center text-xs">03</span> Pay — funds in escrow</div>
+      <div class="mt-3 text-sm leading-6 text-ink2">Pay via Razorpay (UPI/Card/NetBanking). Money held, not sent. Freelancer sees “funded” and starts.</div>
+      <div class="mt-4 bg-ink text-paper p-3 font-mono text-xs leading-4">
+        <div class="flex justify-between"><span>Service</span><span>₹10,000</span></div>
+        <div class="flex justify-between opacity-70"><span>Platform fee (14%)</span><span>₹1,400</span></div>
+        <div class="flex justify-between opacity-70"><span>GST 18% on fee</span><span>₹252</span></div>
+        <div class="h-px bg-white/20 my-1.5"></div>
+        <div class="flex justify-between font-bold"><span>You pay now</span><span>₹10,252</span></div>
+        <div class="text-[10px] opacity-60 mt-1">Held in escrow till you approve</div>
+      </div>
+    </div>
+    <!-- step 4 -->
+    <div class="bg-white border border-stone2 p-5 flex flex-col">
+      <div class="flex items-center gap-2 font-mono text-xs tracking-[0.14em] uppercase"><span class="w-6 h-6 bg-terracotta text-paper grid place-items-center text-xs">04</span> Deliver → approve → payout</div>
+      <div class="mt-3 text-sm leading-6 text-ink2">Review files/links. Approve → freelancer gets ₹8,600 in 1–3 days. Need changes? Request revision. Silence 7 days = auto-complete to protect freelancer.</div>
+      <div class="mt-4 border border-sage/30 bg-sageWash p-3 font-mono text-xs">Auto-release after 7 days • Disputes resolved in 7 days • Support 24–48h</div>
+      <div class="mt-auto pt-4 flex gap-2">
+        <a href="#pricing" class="flex-1 bg-terracotta text-paper text-center py-2 text-sm font-semibold">See full math</a>
+        <a href="#browse" class="flex-1 border border-ink text-center py-2 text-sm font-semibold">Browse</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACE PREVIEW -->
+<section id="browse" class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-10">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <h2 class="font-display text-[30px] sm:text-[36px] tracking-[-0.03em]">Hire from Hyderabad to pan-India</h2>
+    <div class="flex flex-wrap gap-2 font-mono text-xs">
+      <button class="filter-btn active bg-ink text-paper border border-ink px-3 py-1.5" data-filter="all">All • 128</button>
+      <button class="filter-btn border border-stone2 bg-white px-3 py-1.5 hover:border-ink" data-filter="dev">Dev</button>
+      <button class="filter-btn border border-stone2 bg-white px-3 py-1.5 hover:border-ink" data-filter="design">Design</button>
+      <button class="filter-btn border border-stone2 bg-white px-3 py-1.5 hover:border-ink" data-filter="video">Video</button>
+      <button class="filter-btn border border-stone2 bg-white px-3 py-1.5 hover:border-ink" data-filter="writing">Writing</button>
+    </div>
+  </div>
+  <!-- search + filters -->
+  <div class="mt-4 bg-white border border-stone2 p-3 flex flex-col md:flex-row gap-3">
+    <label class="flex-1 flex items-center gap-2 border border-stone2 bg-paper2 px-3 py-2">
+      <i class="ph ph-magnifying-glass opacity-60"></i>
+      <input id="search" type="text" placeholder="Try ‘Next.js’, ‘logo’, ‘reel’, ‘pitch deck’…" class="flex-1 bg-transparent outline-none text-sm placeholder:text-ink2/50">
+      <span class="hidden sm:inline font-mono text-[10px] border border-stone2 bg-white px-1.5 py-0.5">⌘ K</span>
+    </label>
+    <div class="flex gap-2">
+      <select class="border border-stone2 bg-white px-3 py-2 text-sm">
+        <option>₹500 — ₹50k</option>
+        <option>Under ₹5k</option>
+        <option>₹5k — ₹20k</option>
+        <option>₹20k+</option>
+      </select>
+      <select class="border border-stone2 bg-white px-3 py-2 text-sm">
+        <option>Sort: Rating</option>
+        <option>Price low → high</option>
+        <option>Delivery fastest</option>
+      </select>
+      <button class="hidden sm:inline-flex items-center gap-1.5 bg-ink text-paper px-4 py-2 text-sm font-semibold"><i class="ph ph-sliders-horizontal"></i> Filters</button>
+    </div>
+  </div>
+  <!-- cards grid -->
+  <div id="grid" class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- card template: realistic -->
+    <article class="group bg-white border border-stone2 overflow-hidden hover:shadow-lift transition flex flex-col" data-cat="dev">
+      <div class="aspect-[4/3] overflow-hidden bg-paper2 relative">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="">
+        <span class="absolute top-2 left-2 bg-white border border-stone2 px-2 py-1 font-mono text-[11px]">Next.js • Supabase</span>
+        <span class="absolute top-2 right-2 bg-sage text-white px-2 py-1 font-mono text-[11px] font-bold">₹18k — ₹45k</span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold leading-tight">Ship your MVP in 3 weeks — design + code + deploy</h3>
+        <p class="text-sm text-ink2 leading-5 mt-1">Sharvan G. • BITS Pilani • Next.js, Razorpay, Supabase • Deploys on Vercel</p>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face" class="w-7 h-7 rounded-full object-cover border border-stone2" alt="">
+          <span class="font-mono">Sharvan • <span class="text-amber-500">★ 4.9</span> (41) • Hyderabad</span>
+          <span class="ml-auto font-mono bg-paper2 border border-stone2 px-1.5 py-0.5">3-day avg</span>
+        </div>
+        <div class="mt-3 flex gap-1.5 font-mono text-[11px]">
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Escrow</span>
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Source in GitHub</span>
+          <a class="ml-auto bg-ink text-paper px-3 py-1 font-semibold group-hover:bg-black">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="group bg-white border border-stone2 overflow-hidden hover:shadow-lift transition flex flex-col" data-cat="design">
+      <div class="aspect-[4/3] overflow-hidden bg-paper2 relative">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="">
+        <span class="absolute top-2 left-2 bg-white border border-stone2 px-2 py-1 font-mono text-[11px]">Figma → Framer</span>
+        <span class="absolute top-2 right-2 bg-ink text-paper px-2 py-1 font-mono text-[11px] font-bold">₹8k — ₹22k</span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold leading-tight">Landing that converts — copy + design + no-code build</h3>
+        <p class="text-sm text-ink2 leading-5 mt-1">Ananya R. • 82 projects • 4.9 • Writes Telugu + English</p>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop&crop=face" class="w-7 h-7 rounded-full object-cover border border-stone2" alt="">
+          <span class="font-mono">Ananya • <span class="text-amber-500">★ 4.9</span> (82) • Hyderabad</span>
+          <span class="ml-auto font-mono bg-paper2 border border-stone2 px-1.5 py-0.5">5 days</span>
+        </div>
+        <div class="mt-3 flex gap-1.5 font-mono text-[11px]">
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">2 revisions</span>
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Brand kit</span>
+          <a class="ml-auto bg-ink text-paper px-3 py-1 font-semibold">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="group bg-white border border-stone2 overflow-hidden hover:shadow-lift transition flex flex-col" data-cat="video">
+      <div class="aspect-[4/3] overflow-hidden bg-paper2 relative">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="">
+        <span class="absolute top-2 left-2 bg-white border border-stone2 px-2 py-1 font-mono text-[11px]">Premiere • After Effects</span>
+        <span class="absolute top-2 right-2 bg-terracotta text-paper px-2 py-1 font-mono text-[11px] font-bold">₹5k — ₹15k</span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold leading-tight">Reels & ads that hold attention — hook in 2 sec</h3>
+        <p class="text-sm text-ink2 leading-5 mt-1">Vish • Cut for D2C + edtech • 4.7 (56)</p>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" class="w-7 h-7 rounded-full object-cover border border-stone2" alt="">
+          <span class="font-mono">Vish • <span class="text-amber-500">★ 4.7</span> (56) • Bangalore</span>
+          <span class="ml-auto font-mono bg-paper2 border border-stone2 px-1.5 py-0.5">48h</span>
+        </div>
+        <div class="mt-3 flex gap-1.5 font-mono text-[11px]">
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Captions + SFX</span>
+          <a class="ml-auto bg-ink text-paper px-3 py-1 font-semibold">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="group bg-white border border-stone2 overflow-hidden hover:shadow-lift transition flex flex-col" data-cat="writing">
+      <div class="aspect-[4/3] overflow-hidden bg-paper2 relative">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="">
+        <span class="absolute top-2 left-2 bg-white border border-stone2 px-2 py-1 font-mono text-[11px]">Pitch • Deck • Copy</span>
+        <span class="absolute top-2 right-2 bg-ink text-paper px-2 py-1 font-mono text-[11px] font-bold">₹3k — ₹12k</span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold leading-tight">Pitch deck + one-pager — investor ready in 4 days</h3>
+        <p class="text-sm text-ink2 leading-5 mt-1">Pragnya S. • Operations + copy • 4.8 (34) • Hyderabad</p>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face" class="w-7 h-7 rounded-full object-cover border border-stone2" alt="">
+          <span class="font-mono">Pragnya • <span class="text-amber-500">★ 4.8</span> (34)</span>
+          <span class="ml-auto font-mono bg-paper2 border border-stone2 px-1.5 py-0.5">4 days</span>
+        </div>
+        <div class="mt-3 flex gap-1.5 font-mono text-[11px]">
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Founder lenses</span>
+          <a class="ml-auto bg-ink text-paper px-3 py-1 font-semibold">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="group bg-white border border-stone2 overflow-hidden hover:shadow-lift transition flex flex-col" data-cat="design">
+      <div class="aspect-[4/3] overflow-hidden bg-paper2 relative">
+        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="">
+        <span class="absolute top-2 left-2 bg-white border border-stone2 px-2 py-1 font-mono text-[11px]">UI/UX • Design System</span>
+        <span class="absolute top-2 right-2 bg-sage text-white px-2 py-1 font-mono text-[11px] font-bold">₹12k — ₹30k</span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold leading-tight">App UI system — components, tokens, handoff to dev</h3>
+        <p class="text-sm text-ink2 leading-5 mt-1">Karthik N. • Systems thinking • 4.8 (27)</p>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop&crop=face" class="w-7 h-7 rounded-full object-cover border border-stone2" alt="">
+          <span class="font-mono">Karthik • <span class="text-amber-500">★ 4.8</span> (27) • Hyderabad</span>
+          <span class="ml-auto font-mono bg-paper2 border border-stone2 px-1.5 py-0.5">7 days</span>
+        </div>
+        <div class="mt-3 flex gap-1.5 font-mono text-[11px]">
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Figma vars</span>
+          <a class="ml-auto bg-ink text-paper px-3 py-1 font-semibold">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="group bg-white border border-stone2 overflow-hidden hover:shadow-lift transition flex flex-col" data-cat="dev">
+      <div class="aspect-[4/3] overflow-hidden bg-paper2 relative">
+        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="">
+        <span class="absolute top-2 left-2 bg-white border border-stone2 px-2 py-1 font-mono text-[11px]">CRM • Automation</span>
+        <span class="absolute top-2 right-2 bg-terracotta text-paper px-2 py-1 font-mono text-[11px] font-bold">₹10k — ₹35k</span>
+      </div>
+      <div class="p-4 flex-1 flex flex-col">
+        <h3 class="font-semibold leading-tight">Lead → close automation — CRM + WhatsApp + follow-ups</h3>
+        <p class="text-sm text-ink2 leading-5 mt-1">Team Innfill • AI agents + ops • For services & coaching</p>
+        <div class="mt-3 flex items-center gap-2 text-xs">
+          <img src="./logo.png" class="w-7 h-7 object-contain border border-stone2 bg-white p-0.5" alt="">
+          <span class="font-mono">Innfill • <span class="text-amber-500">★ 4.9</span> (18) • Hyderabad</span>
+          <span class="ml-auto font-mono bg-paper2 border border-stone2 px-1.5 py-0.5">Ops in 1 week</span>
+        </div>
+        <div class="mt-3 flex gap-1.5 font-mono text-[11px]">
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">No-code</span>
+          <span class="border border-stone2 bg-paper2 px-1.5 py-1">Razorpay + WA</span>
+          <a class="ml-auto bg-terracotta text-paper px-3 py-1 font-semibold">Talk to us →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="mt-4 flex flex-wrap items-center gap-3 font-mono text-xs">
+    <span class="opacity-60">No hidden fees. Every listing shows escrow + payout date.</span>
+    <a href="https://innfill.in/freelancers" class="ml-auto inline-flex items-center gap-1 border border-ink px-4 py-2 font-semibold hover:bg-ink hover:text-paper transition">Browse all 128 on live site <i class="ph ph-arrow-up-right"></i></a>
+  </div>
+</section>
+
+<!-- PRICING — honest, with calculator -->
+<section id="pricing" class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-10">
+  <div class="border border-stone2 bg-white shadow-paper overflow-hidden">
+    <div class="grid lg:grid-cols-12">
+      <div class="lg:col-span-7 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-stone2">
+        <div class="font-mono text-xs tracking-[0.16em] uppercase text-terracotta">Honest pricing — no “from 5%” games</div>
+        <h2 class="font-display text-[28px] sm:text-[34px] tracking-[-0.03em] leading-none mt-2">We take <span class="bg-terracotta text-paper px-1">14% flat</span>. That’s it.</h2>
+        <p class="text-sm leading-6 text-ink2 mt-3">On ₹10,000 you pay ₹10,252 today (₹252 is 18% GST on our fee, goes to govt). Freelancer gets ₹8,600 after you approve. Cancel before work starts → refund ₹9,600 (₹400 gateway + ₹252 GST non-refundable). Same math at any amount — use the slider.</p>
+        <!-- calculator -->
+        <div class="mt-6 bg-paper2 border border-stone2 p-4 sm:p-5">
+          <div class="flex items-center justify-between font-mono text-xs uppercase tracking-widest">
+            <span>Project value</span>
+            <span class="bg-ink text-paper px-2 py-1 font-bold text-sm">₹ <span id="valDisplay">10,000</span></span>
+          </div>
+          <input id="valSlider" type="range" min="1000" max="100000" step="500" value="10000" class="w-full mt-3 accent-ink">
+          <div class="flex justify-between font-mono text-[11px] opacity-50 mt-1"><span>₹1,000</span><span>₹50k</span><span>₹1L</span></div>
+          <div class="mt-4 grid gap-2 font-mono text-sm">
+            <div class="flex justify-between border-b border-dashed border-stone2 pb-2"><span class="opacity-70">You pay now (escrow)</span><span class="font-bold" id="payNow">₹10,252</span></div>
+            <div class="flex justify-between"><span class="opacity-70">Freelancer receives (after approve)</span><span class="font-bold text-sage" id="freelancerGet">₹8,600</span></div>
+            <div class="flex justify-between text-xs"><span class="opacity-60">Innfill fee (14%)</span><span id="fee">₹1,400</span></div>
+            <div class="flex justify-between text-xs"><span class="opacity-60">GST 18% on fee (to govt)</span><span id="gst">₹252</span></div>
+            <div class="flex justify-between text-xs border-t border-stone2 pt-2 mt-1"><span class="opacity-60">Refund if cancelled early</span><span id="refund">₹9,600</span></div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 font-mono text-[11px]"><i class="ph ph-info text-terracotta"></i> GST is non-refundable because Razorpay + govt already charged it.</div>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2 font-mono text-[11px]">
+          <span class="border border-sage/30 bg-sageWash px-2 py-1">Razorpay secure</span>
+          <span class="border border-stone2 bg-white px-2 py-1">PAN • IFSC • 1–3 day bank</span>
+          <span class="border border-stone2 bg-white px-2 py-1">No wallet lock-in</span>
+        </div>
+      </div>
+      <div class="lg:col-span-5 p-6 sm:p-8 bg-paper/50">
+        <h3 class="font-semibold">How we compare — same ₹10k job</h3>
+        <div class="mt-4 space-y-3 font-mono text-sm">
+          <div class="bg-white border border-ink p-3 flex justify-between items-center">
+            <div><div class="font-bold">Innfill</div><div class="text-xs opacity-60">14% • escrow • Hyderabad support</div></div>
+            <div class="text-right"><div class="font-bold text-sage">You keep ₹8,600</div><div class="text-xs">You pay 10,252</div></div>
+          </div>
+          <div class="bg-white border border-stone2 p-3 flex justify-between items-center opacity-80">
+            <div><div class="font-semibold">Upwork / Fiverr</div><div class="text-xs opacity-60">20% + FX + withdrawal</div></div>
+            <div class="text-right"><div class="font-bold">You keep ₹8,000</div><div class="text-xs">You pay ~₹10,800</div></div>
+          </div>
+          <div class="bg-white border border-stone2 p-3 flex justify-between items-center opacity-80">
+            <div><div class="font-semibold">Agency in Hyderabad</div><div class="text-xs opacity-60">1–3 months • account manager</div></div>
+            <div class="text-right"><div class="font-bold">You pay ₹80k–3L+</div><div class="text-xs">No escrow</div></div>
+          </div>
+        </div>
+        <div class="mt-4 border border-terracotta/20 bg-terracotta/5 p-3 text-sm leading-6">
+          <span class="font-semibold">₹600 more</span> per ₹10k vs global platforms — on ₹1L MVP that’s <span class="font-bold">₹6,000 saved</span>. Plus chat, revisions, and a team that picks up the phone in your timezone.
+        </div>
+        <div class="mt-4 flex gap-2">
+          <a href="https://innfill.in/terms-of-service" class="flex-1 border border-ink text-center py-2 text-sm font-semibold hover:bg-ink hover:text-paper transition">Read Terms §6</a>
+          <a href="https://innfill.in/register" class="flex-1 bg-terracotta text-paper text-center py-2 text-sm font-bold hover:bg-terracottaD transition">Create free account</a>
+        </div>
+        <div class="mt-2 font-mono text-[10px] opacity-50 text-center">Covers processing + Razorpay. GST is govt, not ours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY + FOUNDERS -->
+<section id="community" class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-10">
+  <div class="grid lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-7 bg-white border border-stone2 p-6 sm:p-8">
+      <div class="font-mono text-xs tracking-[0.16em] uppercase text-sage">Why we built Innfill</div>
+      <h2 class="font-display text-[28px] leading-none tracking-[-0.03em] mt-2">We were the freelancers getting ghosted.</h2>
+      <p class="text-sm leading-6 text-ink2 mt-3">NIAT + BITS builders, 2024. We kept seeing Indian student talent do world-class work but lose to 20% fees, no escrow, and “US only” platforms. So we built one <span class="font-semibold">for India</span> — community first. The marketplace is step one.</p>
+      <div class="mt-5 grid sm:grid-cols-3 gap-3">
+        <div class="border border-stone2 p-3 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-paper2 border border-stone2 overflow-hidden"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face" class="w-full h-full object-cover" alt=""></div>
+          <div class="font-semibold text-sm mt-2">Sharvan Gajula</div>
+          <div class="font-mono text-[11px] opacity-60">CTO — Full Stack • NIAT / BITS</div>
+          <a href="https://github.com/mani-1509" target="_blank" class="inline-flex items-center gap-1 font-mono text-xs mt-1 hover:text-terracotta"><i class="ph ph-github-logo"></i> mani-1509</a>
+        </div>
+        <div class="border border-stone2 p-3 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-paper2 border border-stone2 overflow-hidden"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face" class="w-full h-full object-cover" alt=""></div>
+          <div class="font-semibold text-sm mt-2">Pragnya Shalini</div>
+          <div class="font-mono text-[11px] opacity-60">Client & Operations</div>
+          <a href="https://linkedin.com/company/innfill-in" target="_blank" class="inline-flex items-center gap-1 font-mono text-xs mt-1 hover:text-terracotta"><i class="ph ph-linkedin-logo"></i> Innfill</a>
+        </div>
+        <div class="border border-stone2 p-3 text-center">
+          <div class="w-12 h-12 mx-auto rounded-full bg-paper2 border border-stone2 overflow-hidden"><img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&h=200&fit=crop&crop=face" class="w-full h-full object-cover" alt=""></div>
+          <div class="font-semibold text-sm mt-2">Karthik N.</div>
+          <div class="font-mono text-[11px] opacity-60">Growth • Hyderabad</div>
+          <div class="font-mono text-xs mt-1 opacity-60">Innfill.in</div>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs">
+        <a href="https://linkedin.com/company/innfill-in" target="_blank" class="inline-flex items-center gap-1.5 border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition"><i class="ph ph-linkedin-logo"></i> LinkedIn • Build in public</a>
+        <a href="https://instagram.com/innfill.in" target="_blank" class="inline-flex items-center gap-1.5 border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition"><i class="ph ph-instagram-logo"></i> @innfill.in • Community</a>
+        <a href="https://github.com/mani-1509" target="_blank" class="inline-flex items-center gap-1.5 border border-stone2 bg-white px-3 py-1.5 hover:border-ink transition"><i class="ph ph-code"></i> Built on Supabase + Razorpay</a>
+      </div>
+    </div>
+    <div class="lg:col-span-5 bg-ink text-paper p-6 sm:p-8 flex flex-col">
+      <h3 class="font-display text-[22px] leading-none">Join the Innfill Freelancers Community</h3>
+      <p class="text-sm leading-6 opacity-80 mt-2">For student freelancers & studios. Weekly jams, client leads, portfolio reviews. Hyderabad-first, remote-friendly.</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li class="flex gap-2"><i class="ph ph-check text-sage mt-0.5"></i> 10 Days. 10 Problems. Fix Freelancing for India — our public series</li>
+        <li class="flex gap-2"><i class="ph ph-check text-sage mt-0.5"></i> Deccan Chronicle featured • NIAT + BITS founders</li>
+        <li class="flex gap-2"><i class="ph ph-check text-sage mt-0.5"></i> 2 years building • v0.1 live Nov 2025 • now scaling</li>
+      </ul>
+      <div class="mt-6 border border-white/15 bg-white/[0.04] p-4">
+        <div class="font-mono text-xs tracking-[0.12em] uppercase opacity-60">Upcoming</div>
+        <div class="font-semibold mt-1">Hyderabad freelancer jam — support@innfill.in to join</div>
+        <div class="font-mono text-xs opacity-60 mt-1">Small, useful, no pitches. Bring one portfolio link.</div>
+      </div>
+      <a href="mailto:support@innfill.in?subject=Community%20invite" class="mt-6 bg-paper text-ink text-center py-3 font-bold hover:bg-paper2 transition">Request invite →</a>
+      <div class="mt-3 font-mono text-[11px] opacity-50 text-center">1–10 people today. Intentionally small. That’s the point.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ — specific, not slop -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-10">
+  <div class="border border-stone2 bg-white">
+    <div class="grid lg:grid-cols-12">
+      <div class="lg:col-span-4 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-stone2 bg-paper/30">
+        <h2 class="font-display text-[26px] leading-none tracking-[-0.03em]">Questions Indians actually ask</h2>
+        <p class="text-sm leading-6 text-ink2 mt-3">GST, PAN, refunds — answered without “ecosystem” fluff. Still stuck? <a href="mailto:support@innfill.in" class="underline decoration-terracotta decoration-2">support@innfill.in</a> replies in 24–48h.</p>
+        <div class="mt-4 font-mono text-xs border border-stone2 bg-white p-3">
+          <div class="font-bold">Need invoice with GST?</div>
+          <div class="opacity-70 leading-4 mt-1">We provide GST invoices for the 14% fee. Your main service amount is between you and freelancer (consult your CA for TDS).</div>
+        </div>
+      </div>
+      <div class="lg:col-span-8 divide-y divide-stone2">
+        <details class="group p-5 sm:p-6 open:bg-paper2/50" open>
+          <summary class="flex justify-between gap-4 cursor-pointer list-none font-semibold">Why 14% and not “5–10%”?  <i class="ph ph-plus group-open:rotate-45 transition"></i></summary>
+          <p class="text-sm leading-6 text-ink2 mt-3">Because 5% can’t fund escrow, disputes, and bank payouts. Our terms §6.2 have always been 14% + 18% GST on that fee. We fixed the homepage lie — this is the real math. Compare on ₹10k: you pay 10,252, freelancer gets 8,600.</p>
+        </details>
+        <details class="group p-5 sm:p-6 open:bg-paper2/50">
+          <summary class="flex justify-between gap-4 cursor-pointer list-none font-semibold">Is my money safe? What if freelancer disappears? <i class="ph ph-plus group-open:rotate-45 transition"></i></summary>
+          <p class="text-sm leading-6 text-ink2 mt-3">Razorpay escrow holds funds. If no delivery in agreed time, raise dispute; we mediate with chat + files. Decision in 7 days. If you vanish 7 days after delivery, order auto-completes to protect freelancer — check your email.</p>
+        </details>
+        <details class="group p-5 sm:p-6 open:bg-paper2/50">
+          <summary class="flex justify-between gap-4 cursor-pointer list-none font-semibold">Do you store my card? What PAN/IFSC do you need? <i class="ph ph-plus group-open:rotate-45 transition"></i></summary>
+          <p class="text-sm leading-6 text-ink2 mt-3">Never. Razorpay handles cards/UPI. We store only Razorpay payment IDs. Freelancers add account number + IFSC + PAN for payouts (tax compliance) — stored in Supabase with Row Level Security. See Privacy §5.2.</p>
+        </details>
+        <details class="group p-5 sm:p-6 open:bg-paper2/50">
+          <summary class="flex justify-between gap-4 cursor-pointer list-none font-semibold">When do I get paid? Minimum? <i class="ph ph-plus group-open:rotate-45 transition"></i></summary>
+          <p class="text-sm leading-6 text-ink2 mt-3">1–3 business days after client approves, directly to bank. Minimum ₹100. No wallet fees.</p>
+        </details>
+        <details class="group p-5 sm:p-6 open:bg-paper2/50">
+          <summary class="flex justify-between gap-4 cursor-pointer list-none font-semibold">How is Innfill different from Fiverr/Upwork for an Indian startup? <i class="ph ph-plus group-open:rotate-45 transition"></i></summary>
+          <p class="text-sm leading-6 text-ink2 mt-3">Fiverr/Upwork charge 20% + FX + withdrawal fees, US dispute hours, and “AI gig” spam. We’re Hyderabad-based, 14%, INR-first (UPI/NetBanking), and community-led — we know what a ₹25k landing means to a second-year student founder.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="max-w-[1280px] mx-auto px-4 sm:px-6 mt-10 mb-6">
+  <div class="bg-ink text-paper p-6 sm:p-10 flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between border border-ink grain overflow-hidden relative">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.06]" style="background-image: radial-gradient(circle at 20% 20%, #fff 1px, transparent 1px); background-size: 22px 22px;"></div>
+    <div class="relative">
+      <div class="font-mono text-xs tracking-[0.16em] uppercase opacity-60">Ready to ship?</div>
+      <h2 class="font-display text-[30px] sm:text-[38px] leading-[0.95] tracking-[-0.03em] mt-1">Hire in days. <span class="italic font-medium text-sageWash">Get paid</span> in days.</h2>
+      <p class="text-sm opacity-80 mt-2 max-w-[48ch]">Join 2.4k students, founders and studios. Post free. Pay only when you escrow. Freelancers keep 86%.</p>
+    </div>
+    <div class="relative flex flex-col sm:flex-row gap-3 shrink-0 w-full lg:w-auto">
+      <a href="https://innfill.in/register" class="bg-paper text-ink px-8 py-3 font-bold text-center hover:bg-paper2 transition">Start hiring — free <i class="ph ph-arrow-right ml-1"></i></a>
+      <a href="https://innfill.in/register" class="border border-white/20 text-paper px-8 py-3 font-semibold text-center hover:bg-white/10 transition">Offer services →</a>
+    </div>
+  </div>
+  <div class="font-mono text-[11px] opacity-60 text-center mt-3">By continuing you agree to <a href="https://innfill.in/terms-of-service" class="underline">Terms</a> • <a href="https://innfill.in/privacy-policy" class="underline">Privacy</a> • <a href="https://innfill.in/how-it-works" class="underline">How it works</a> — last updated 11 Nov 2025</div>
+</section>
+</main>
+
+<!-- FOOTER — registered, real -->
+<footer class="border-t border-stone2 bg-white">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 py-8">
+    <div class="grid md:grid-cols-12 gap-8">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3">
+          <img src="./logo.png" alt="Innfill" class="w-9 h-9 object-contain border border-stone2 p-1 bg-white">
+          <div><div class="font-bold tracking-tight leading-none"><span class="text-ink">INN</span><span class="text-blueInfill">FILL</span></div><div class="font-mono text-[10px] tracking-[0.16em] uppercase opacity-60">Connect • Create • Collaborate</div></div>
+          <span class="ml-2 hidden sm:inline-flex items-center gap-1 border border-sage/30 bg-sageWash px-2 py-1 font-mono text-[10px] tracking-widest uppercase">Registered • Est. 2024</span>
+        </div>
+        <p class="text-sm leading-6 text-ink2 mt-3 max-w-[42ch]">Freelancing marketplace for India — escrow, Razorpay, and a community that actually answers. Built by student founders in Hyderabad. Featured in Deccan Chronicle.</p>
+        <div class="mt-4 flex flex-wrap gap-2 font-mono text-xs">
+          <a href="https://linkedin.com/company/innfill-in" target="_blank" class="inline-flex items-center gap-1 border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition"><i class="ph ph-linkedin-logo"></i> LinkedIn</a>
+          <a href="https://instagram.com/innfill.in" target="_blank" class="inline-flex items-center gap-1 border border-ink px-3 py-1.5 hover:bg-ink hover:text-paper transition"><i class="ph ph-instagram-logo"></i> Instagram</a>
+          <a href="https://github.com/mani-1509" target="_blank" class="inline-flex items-center gap-1 border border-stone2 px-3 py-1.5 hover:border-ink transition"><i class="ph ph-github-logo"></i> GitHub</a>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <div class="font-mono text-xs tracking-[0.16em] uppercase opacity-60">Product</div>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#browse" class="hover:text-terracotta">Browse talent</a></li>
+          <li><a href="#how" class="hover:text-terracotta">How it works</a></li>
+          <li><a href="#pricing" class="hover:text-terracotta">Pricing — 14% flat</a></li>
+          <li><a href="https://innfill.in/how-it-works" class="hover:text-terracotta">Order workflow</a></li>
+          <li><a href="https://innfill.in/terms-of-service" class="hover:text-terracotta">Terms</a></li>
+          <li><a href="https://innfill.in/privacy-policy" class="hover:text-terracotta">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <div class="font-mono text-xs tracking-[0.16em] uppercase opacity-60">Company</div>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li class="font-medium">Innfill Technologies</li>
+          <li class="font-mono text-xs leading-4 opacity-70">9-80/3/A, Street No-4<br>Bodduppal, Udaya Nagar<br>Hyderabad, TS 500092, India</li>
+          <li><a href="mailto:support@innfill.in" class="underline">support@innfill.in</a></li>
+          <li class="font-mono text-xs opacity-60">CIN/GST on request • Registered • 2024</li>
+        </ul>
+      </div>
+      <div class="md:col-span-3">
+        <div class="font-mono text-xs tracking-[0.16em] uppercase opacity-60">Stay in the loop</div>
+        <p class="text-sm leading-5 text-ink2 mt-3">Build-in-public notes + student jams. No spam, one mail a month.</p>
+        <form onsubmit="event.preventDefault(); alert('Thanks! We’ll mail from support@innfill.in');" class="mt-3 flex gap-2">
+          <input type="email" placeholder="you@college.edu" required class="flex-1 border border-stone2 bg-paper2 px-3 py-2 text-sm outline-none focus:border-ink">
+          <button type="submit" class="bg-ink text-paper px-4 py-2 text-sm font-semibold hover:bg-black">Join</button>
+        </form>
+        <div class="mt-3 font-mono text-[11px] opacity-50">Press: <a href="https://linkedin.com/company/innfill-in" target="_blank" class="underline">Deccan Chronicle — May 2026</a></div>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-stone2 flex flex-wrap gap-3 justify-between items-center font-mono text-xs opacity-60">
+      <div>© 2026 Innfill. All rights reserved. Made in Hyderabad, for India. <span class="hidden sm:inline">•</span> Supabase • Razorpay • Vercel</div>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1"><i class="ph ph-seal-check text-sage"></i> Escrow protected</span>
+        <span>•</span>
+        <span>1–10 team • +300% YoY</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// mobile nav
+document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('hidden'));
+// pricing calc
+const slider=document.getElementById('valSlider'), valDisplay=document.getElementById('valDisplay'), payNow=document.getElementById('payNow'), feeEl=document.getElementById('fee'), gstEl=document.getElementById('gst'), getEl=document.getElementById('freelancerGet'), refundEl=document.getElementById('refund');
+function fmt(n){return '₹'+n.toLocaleString('en-IN')}
+function recalc(){
+  const v=parseInt(slider.value,10);
+  const fee=Math.round(v*0.14);
+  const gst=Math.round(fee*0.18);
+  const pay=v+gst; // client pays v + gst (fee deducted from freelancer, consistent with terms)
+  const get=v-fee;
+  const refund=v-Math.round(v*0.04);
+  valDisplay.textContent=v.toLocaleString('en-IN');
+  payNow.textContent=fmt(pay);
+  feeEl.textContent=fmt(fee);
+  gstEl.textContent=fmt(gst);
+  getEl.textContent=fmt(get);
+  refundEl.textContent=fmt(refund);
+}
+slider?.addEventListener('input',recalc); recalc();
+// filter + search
+const btns=document.querySelectorAll('.filter-btn'), cards=[...document.querySelectorAll('#grid article')], search=document.getElementById('search');
+let active='all';
+function apply(){
+  const q=(search.value||'').toLowerCase();
+  cards.forEach(c=>{
+    const cat=c.dataset.cat, text=c.innerText.toLowerCase();
+    const catOk=active==='all'||cat===active;
+    const qOk=!q||text.includes(q);
+    c.style.display=(catOk&&qOk)?'':'none';
+  })
+}
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>{x.classList.remove('active','bg-ink','text-paper','border-ink'); x.classList.add('bg-white','border-stone2')});
+  b.classList.add('active','bg-ink','text-paper','border-ink'); b.classList.remove('bg-white','border-stone2');
+  active=b.dataset.filter; apply();
+}));
+search?.addEventListener('input',apply);
+</script>
+</body>
+</html>
