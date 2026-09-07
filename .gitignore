@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env
+.env
+.env.local
+
+# Deps (if you add a build later)
+node_modules/
+
+# Vercel
+.vercel
+
+# Impeccable local
+.impeccable/live/
